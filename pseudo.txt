@@ -1,0 +1,89 @@
+
+TEXTO USADO ANTERIORMENTE PARA DEFINIR A SOLUÇÃO INICIAL, PROVAVELMENTE A IMPLEMENTAÇÃO ESTÁ DIFERENTE
+
+Entradas: D, S
+ 
+Definir C como vetor de custo
+Iterar (i) sobre linhas de S (times)
+    Definir origem como o valor de i (índice do time)
+    Iterar (j) sobre colunas de S (partidas)
+        Se S[i][j] for em casa
+            Definir destino como o índice do time da casa
+        Do contrário
+            Definir destino como o índice do time adversário  
+        Adicionar a C[i] o valor de D[origem][destino]
+        Atualizar origem para o valor de destino
+Retornar somatório dos valores de C
+ 
+ 
+Entradas: D (matriz de distâncias), alfa
+ 
+Definir S como  matriz de solução parcial (somente metada das partidas)
+Definir P tabela de partidas possíveis para cada time
+Iterar sobre colunas de S (partidas da primeira rodada) de forma crescente
+    Definir P' como cópia de P 
+    Enquanto P' não for null, fazer
+        Definir V' como o menor vetor de adversários possíveis de P' que não é null
+		Definir casa como o valor do índice de V' em P'
+        Alterar V' para receber lista restrita de partidas possíveis
+        Selecionar aleatoriamente uma partida de V'
+        Adicionar partida na coluna atual de S e de linha valor da casa
+        Adicionar partida na coluna atual de S e de linha valor do adversario
+        Alterar P' anular colunas dos times na partida escolhida da tabela de possibilidades
+        Alterar P' anular elementos com a partida escolhida da tabela de possibilidades
+        Alterar P retirando elementos que são partidas de S
+Definir S' como cópia de S
+Iterar sobre número de colunas de S' (j) de forma crescente
+    Se é a primeira, fazer
+        Inserir aleatoriamente home/away ás partidas
+    Do contrário, fazer
+        Iterar sobre linhas de S' de forma crescente
+            Se o elemento não possui local definido, fazer
+                Definir time1 como o índice da linha de S'
+                Definir time2 como o valor do elemento
+                Definir ultimoLocal1 como home ou away, dependendo do último local que time1 jogou
+                Definir seq1 como tamanho da última sequência de jogos no ultimoLocal1
+                Definir ultimoLocal2 como home ou away, dependendo do último local que time2 jogou
+                Definir seq2 como tamanho da última sequência de jogos no ultimoLocal2
+                Se seq1 > seq2, fazer
+                    Definir local de S'[time1][j] como o inverso de ultimoLocal1
+                    Definir local de S'[time2][j] como o mesmo de ultimoLocal2
+                Se seq1 < seq2, fazer
+                    Definir local de S'[time1][j] como o mesmo de ultimoLocal1
+                    Definir local de S'[time2][j] como o inverso de ultimoLocal2
+                Do contrário, fazer
+                    Se ultimoLocal1 é diferente de ultimoLocal2, fazer
+                        Definir local de S'[time1][j] como o inverso de ultimoLocal1
+                        Definir local de S'[time2][j] como o inverso de ultimoLocal2
+                    Do contrário, fazer
+                        Definir local de S'[time1][j] aleatoriamente
+                        Definir local de S'[time2][j] como o local inverso ao de S'[time1][j]
+    Se é a última partida, fazer
+        Definir solução como S' mais a concatenação de S' com Home-Away Swap
+        Se solução é válida
+            Retornar solução
+        Alterar S' como cópia de S
+        Alterar j como -1
+ 
+-------------------------------------------------------------------------------------------------------
+ 
+Entrada: alfa, V', D
+ 
+Definir t como alfa * tamanho de V'
+ 
+-------------------------------------------------------------------------------------------------------
+ 
+ 
+Entradas: D, S
+ 
+Definir C como vetor de custo
+Iterar (i) sobre linhas de S (times)
+    Definir origem como o valor de i (índice do time)
+    Iterar (j) sobre colunas de S (partidas)
+        Se S[i][j] for em casa
+            Definir destino como o índice do time da casa
+        Do contrário
+            Definir destino como o índice do time adversário  
+        Adicionar a C[i] o valor de D[origem][destino]
+        Atualizar origem para o valor de destino
+Retornar somatório dos valores de C

@@ -1,0 +1,16 @@
+{
+  "name": "mttp-grasp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Esse é uma implementação da metaheurística GRASP para resolver o Mirrored Traveling Tournament Problem",
+  "main": "index.js",
+  "scripts": {
+    "test": "node -e 'require(\"./index.js\").app()'"
+  },
+  "author": "Andrei Parente (UFRRJ)",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^8.3.1",
+    "winston": "^3.3.3"
+  }
+}
